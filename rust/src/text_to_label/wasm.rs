@@ -2,9 +2,9 @@ use crate::text_to_label::shared::*;
 
 use std::path::Path;
 
-pub struct OpenJTalkWasm {}
+pub struct OpenJTalk{}
 
-impl TextToLabel for OpenJTalkWasm {
+impl TextToLabel for OpenJTalk {
     fn initialize() -> Self {
         Self {}
     }

@@ -5,14 +5,14 @@ use std::path::Path;
 
 // see: voicevox-core
 // https://github.com/VOICEVOX/voicevox_core/blob/main/crates/voicevox_core/src/engine/open_jtalk.rs
-pub struct OpenJTalkNative {
+pub struct OpenJTalk {
     mecab: ManagedResource<Mecab>,
     njd: ManagedResource<Njd>,
     jpcommon: ManagedResource<JpCommon>,
     dict_loaded: bool,
 }
 
-impl TextToLabel for OpenJTalkNative {
+impl TextToLabel for OpenJTalk {
     fn initialize() -> Self {
         Self {
             mecab: ManagedResource::initialize(),
@@ -48,7 +48,7 @@ impl TextToLabel for OpenJTalkNative {
     }
 }
 
-impl OpenJTalkNative {
+impl OpenJTalk {
     fn extract_fullcontext_non_reflesh(&mut self, text: impl AsRef<str>) -> Result<Vec<String>> {
         let mecab_text =
             text2mecab(text.as_ref()).map_err(|e| OpenJTalkError::ExtractFullContext {
