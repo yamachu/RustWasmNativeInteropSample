@@ -6,3 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anyhow = "1.0"
+thiserror = "1.0"
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+open_jtalk = { git = "https://github.com/VOICEVOX/open_jtalk-rs.git", rev="c77112b470874a6a963426ed6c2fb21f12394a78" }
