@@ -1,9 +1,6 @@
 mod text_to_label;
 
-use text_to_label::{
-    implement::{self, OpenJTalk},
-    shared::TextToLabel,
-};
+use text_to_label::{OpenJTalk, TextToLabel};
 
 struct SampleImpl {
     ojt: OpenJTalk,
@@ -12,7 +9,7 @@ struct SampleImpl {
 impl SampleImpl {
     pub fn initialize() -> Self {
         Self {
-            ojt: implement::OpenJTalk::initialize(),
+            ojt: OpenJTalk::initialize(),
         }
     }
 
@@ -24,7 +21,7 @@ impl SampleImpl {
 }
 
 pub fn dummy_impl() {
-    if let Ok(v) = implement::OpenJTalk::initialize().extract_fullcontext("ほげふが") {
+    if let Ok(v) = OpenJTalk::initialize().extract_fullcontext("ほげふが") {
         println!("{:?}", v);
     }
 
