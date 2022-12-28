@@ -1,8 +1,15 @@
+use wasm_bindgen::prelude::wasm_bindgen;
+
 use crate::text_to_label::shared::*;
 
 use std::path::Path;
 
-pub struct OpenJTalk{}
+#[wasm_bindgen]
+extern "C" {
+    pub fn this_is_from_env() -> bool;
+}
+
+pub struct OpenJTalk {}
 
 impl TextToLabel for OpenJTalk {
     fn initialize() -> Self {
@@ -10,7 +17,7 @@ impl TextToLabel for OpenJTalk {
     }
 
     fn dict_loaded(&self) -> bool {
-        true
+        this_is_from_env()
     }
 
     fn extract_fullcontext(&mut self, _text: impl AsRef<str>) -> Result<Vec<String>> {

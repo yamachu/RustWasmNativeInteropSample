@@ -1,6 +1,7 @@
 mod text_to_label;
 
 use text_to_label::{OpenJTalk, TextToLabel};
+use wasm_bindgen::prelude::wasm_bindgen;
 
 struct SampleImpl {
     ojt: OpenJTalk,
@@ -26,6 +27,12 @@ pub fn dummy_impl() {
     }
 
     SampleImpl::initialize().run();
+}
+
+#[wasm_bindgen]
+pub fn greet() -> bool {
+    let ojt = OpenJTalk::initialize();
+    ojt.dict_loaded()
 }
 
 // TODO: Test Native Library
